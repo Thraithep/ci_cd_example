@@ -64,7 +64,7 @@ module.exports = (env = {}) => {
                     template: './template/index.html',
                 }
             ),
-            new BundleAnalyzerPlugin()
+            // new BundleAnalyzerPlugin()
         ],
         optimization: {
             splitChunks: {
