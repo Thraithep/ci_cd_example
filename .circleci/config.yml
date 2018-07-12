@@ -31,3 +31,18 @@ jobs:
         
       # run tests!
       - run: yarn test
+
+      - run: sudo apt-get update && sudo apt-get install -y python-dev
+      - run: sudo curl -O https://bootstrap.pypa.io/get-pip.py
+      - run: sudo python get-pip.py
+      - run: sudo pip install awscli --upgrade
+      - run: aws --version
+      - run: aws s3 ls
+      - run: 
+          name: deploy
+          command: |
+            if["$CIRCLE_BRANCH" == "staging"]; then
+              yarn run deploy:stg
+            elif["$CIRCLE_BRANCH" == "master"]; then
+              yarn run deploy:prod
+            fi
