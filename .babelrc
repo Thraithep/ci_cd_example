@@ -14,11 +14,11 @@
         ]
       },
       "test": {
-        "presets": [[
+        "presets": [
             "env",
             "react",
             "stage-0"
-            , { "preset-env": { "modules": "commonjs" } }]]
+        ]
       },
       "none":{
           "presets":[             
