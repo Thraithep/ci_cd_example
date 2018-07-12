@@ -38,11 +38,12 @@ jobs:
       - run: sudo pip install awscli --upgrade
       - run: aws --version
       - run: aws s3 ls
-      - run: 
-          name: deploy
+      # Deploy project with different configuration based on the current branch
+      - run:
+          name: Deploy
           command: |
-            if["$CIRCLE_BRANCH" == "staging"]; then
-              yarn run deploy:stg
-            elif["$CIRCLE_BRANCH" == "master"]; then
-              yarn run deploy:prod
-            fi
+              if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                  yarn deploy:stg
+              elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                  yarn deploy:prod
+              fi
